@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>lifetimer</title>
+
+    <!-- load jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <br>
+      <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+          <h1>Choose date of your death?</h1>
+        </div>
+        <div class="col-sm-3">
+        </div>
+      </div> <!-- end of row-->
+
+      <div class="row">
+        <form class="form-inline" id="submitDate">
+          <div class="form-group">
+            <label for="currentAge">Current Age</label><br>
+            <input type="number" name="currentAgeYear" id="currentAge" placeholder="23 years old">
+          </div>
+
+          <div class="form-group">
+            <label for="inputDate">Age to die</label><br>
+            <input type="text" name="inputDate" id="inputDate" placeholder="76 years old">
+          </div>
+          <input type="submit">
+        </form>
+      </div>
+
+      <div class="row" class="hidden">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-5">
+          <h4>Date Input:</h4><span id="processedDate"></span>
+        </div>
+
+      </div>
+
+    </div> <!-- end of container -->
+
+
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>
