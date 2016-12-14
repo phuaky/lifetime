@@ -40,17 +40,34 @@ $( "#submitDate" ).submit(function( event ) {
 
   var multiplyTotalDaysThenToSeconds = player.daysLeft * 60 * 60
 
+  var playerDSTM = Math.floor(player.dailySleepingTime * multiplyTotalDaysThenToSeconds)
+  var playerDETM = Math.floor(player.dailyEatingTime * multiplyTotalDaysThenToSeconds)
+  var playerDTTM = Math.floor(player.dailyToiletTime * multiplyTotalDaysThenToSeconds)
+  var totalLiabilities = playerDSTM + playerDETM + playerDTTM
+  var netWorth = player.secondsLeft - totalLiabilities
+
   // append liabilities
-  $("#sleepingHours").append(Math.floor(player.dailySleepingTime * multiplyTotalDaysThenToSeconds))
-  $("#eatingHours").append(Math.floor(player.dailyEatingTime * multiplyTotalDaysThenToSeconds))
-  $("#toiletHours").append(Math.floor(player.dailyToiletTime * multiplyTotalDaysThenToSeconds))
+  $("#sleepingHours").append(playerDSTM)
+  $("#eatingHours").append(playerDETM)
+  $("#toiletHours").append(playerDTTM)
+  $("tbody").append(`
+    <tr>
+      <td class="subHeadz">Total</td>
+      <td>${player.secondsLeft}</td>
+      <td class="subHeadz">Total</td>
+      <td>${totalLiabilities}</td>
+      </tr>
+      <tr class="table-success">
+        <td class="subHeadz" colspan="3">Net Worth</td>
+        <td>${netWorth}</td>
+      </tr>
+    `)
+
 
   var deadLine = new Date(Date.parse(new Date()) + player.daysLeft * 24 * 60 * 60 * 1000);
 
   initializeClock('clockdiv', deadLine);
-  initializeInTimeClock('inTimeClockDiv', deadLine);
-
-  console.log('hey im done');
+  initializeInTimeClock('inTimeClockDiv', netWorth);
 
 });
 
@@ -160,13 +177,11 @@ function initializeInTimeClock(id, endtime) {
   var secondsSpan = clock.querySelector('.iTSeconds');
 
   function updateClock() {
-    var t = getTimeRemaining(endtime);
-    console.log(t)
+    var t = endtime -= 1
 
-    secondsSpan.innerHTML = t.total.toLocaleString()
+    secondsSpan.innerHTML = t.toLocaleString()
 
     if (t.total <= 0) {
-      console.log('im in here:');
       clearInterval(timeinterval);
     }
   }
