@@ -60,3 +60,17 @@ h1{
 	padding-top: 5px;
 	font-size: 16px;
 }
+
+th {
+	text-align: center;
+	font-weight: 1000;
+}
+
+.subHeadz {
+	text-align: left;
+	font-weight: 500;
+}
+
+td {
+	text-align: right;
+}

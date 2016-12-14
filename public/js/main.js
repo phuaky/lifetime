@@ -1,6 +1,6 @@
 $(function () {
   console.log('the countdown begun le');
-  
+
   $('#myTab a').click(function (e) {
     e.preventDefault()
     $(this).tab('show')
@@ -9,6 +9,9 @@ $(function () {
 });
 
 var player = new Object();
+player.dailySleepingTime = 8;
+player.dailyEatingTime = 1.167;
+player.dailyToiletTime = 0.5;
 var currentAgeDate;
 var deathDate;
 
@@ -32,6 +35,16 @@ $( "#submitDate" ).submit(function( event ) {
   $(this.currentAge).val("")
   $(this.inputDate).val("")
 
+  // append to balance sheet
+  $("#secondsStart").append(player.secondsLeft)
+
+  var multiplyTotalDaysThenToSeconds = player.daysLeft * 60 * 60
+
+  // append liabilities
+  $("#sleepingHours").append(Math.floor(player.dailySleepingTime * multiplyTotalDaysThenToSeconds))
+  $("#eatingHours").append(Math.floor(player.dailyEatingTime * multiplyTotalDaysThenToSeconds))
+  $("#toiletHours").append(Math.floor(player.dailyToiletTime * multiplyTotalDaysThenToSeconds))
+
   var deadLine = new Date(Date.parse(new Date()) + player.daysLeft * 24 * 60 * 60 * 1000);
 
   initializeClock('clockdiv', deadLine);
@@ -40,6 +53,13 @@ $( "#submitDate" ).submit(function( event ) {
   console.log('hey im done');
 
 });
+
+$("#settingsForm").submit(function(event) {
+  event.preventDefault();
+  player.dailySleepingTime = $(this.sleepingHours).val() ;
+  player.dailyEatingTime = $(this.eatingHours).val() ;
+  player.dailyToiletTime = $(this.toiletHours).val() ;
+})
 
 function calcYearsLeft(current, last) {
   var yL = last - current
@@ -133,20 +153,12 @@ function initializeClock(id, endtime) {
 
 function initializeInTimeClock(id, endtime) {
   var clock = document.getElementById(id);
-  // var daysSpan = clock.querySelector('.days');
-  // var hoursSpan = clock.querySelector('.hours');
-  // var minutesSpan = clock.querySelector('.minutes');
   var secondsSpan = clock.querySelector('.iTSeconds');
 
   function updateClock() {
     var t = getTimeRemaining(endtime);
 
-    // daysSpan.innerHTML = t.days;
-    // hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    // minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    console.log("this is t.total:", t.total)
     secondsSpan.innerHTML = t.total
-    console.log(secondsSpan.innerHTML)
 
     if (t.total <= 0) {
       console.log('im in here:');

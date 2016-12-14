@@ -92,8 +92,60 @@
           </div>
         </div>
         <div class="tab-pane" id="messages" role="tabpanel">...</div>
-        <div class="tab-pane" id="settings" role="tabpanel">...</div>
+        <div class="tab-pane" id="settings" role="tabpanel">
+          <form id="settingsForm">
+            <div class="form-group">
+              <label for="sleepingHours">Average Sleeping hours per day</label>
+              <input type="number" step="any" class="form-control" name="sleepingHours" placeholder="Enter sleeping hours" value="8">
+            </div>
+            <div class="form-group">
+              <label for="eatingHours">Average Eating hours per day</label>
+              <input type="number" step="any" class="form-control" name="eatingHours" placeholder="Enter eating hours" value="1.167">
+            </div>
+            <div class="form-group">
+              <label for="toiletHours">Average Toilet Hygiene hours per day</label>
+              <input type="number" step="any" class="form-control" name="toiletHours" placeholder="Enter TH hours" value="0.5">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
       </div> <!-- end of tab contents -->
+
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th colspan="2">Assets</th>
+            <th colspan="2">Liabilities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="subHeadz">Time on Hand</td>
+            <td></td>
+            <td class="subHeadz">Time Payble</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Time Bank Account</td>
+            <td id="secondsStart"></td>
+            <td>Sleeping</td>
+            <td id="sleepingHours"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Eating</td>
+            <td id="eatingHours"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Toilet Hygiene</td>
+            <td id="toiletHours"></td>
+          </tr>
+        </tbody>
+      </table>
 
 
 
