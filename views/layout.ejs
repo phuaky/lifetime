@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     <div class="container">
@@ -38,18 +39,63 @@
             <label for="inputDate">Age to die</label><br>
             <input type="text" name="inputDate" id="inputDate" placeholder="76 years old">
           </div>
-          <input type="submit">
+          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
         </form>
       </div>
 
-      <div class="row" class="hidden">
-        <div class="col-sm-3">
-        </div>
-        <div class="col-sm-5">
-          <h4>Date Input:</h4><span id="processedDate"></span>
-        </div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#countDownClock" role="tab">Countdown Clock</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#inTime" role="tab">In Time Countdown</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Messages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
+        </li>
+      </ul>
 
-      </div>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="countDownClock" role="tabpanel">
+          <h1>Countdown Clock</h1>
+          <div id="clockdiv">
+            <div>
+              <span class="days"></span>
+              <div class="smalltext">Days</div>
+            </div>
+            <div>
+              <span class="hours"></span>
+              <div class="smalltext">Hours</div>
+            </div>
+            <div>
+              <span class="minutes"></span>
+              <div class="smalltext">Minutes</div>
+            </div>
+            <div>
+              <span class="seconds"></span>
+              <div class="smalltext">Seconds</div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="inTime" role="tabpanel">
+          <h1>In Time Hand Clock</h1>
+          <div id="inTimeClockDiv">
+            <div>
+              <span class="iTSeconds"></span>
+              <div class="smalltext">Seconds</div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="messages" role="tabpanel">...</div>
+        <div class="tab-pane" id="settings" role="tabpanel">...</div>
+      </div> <!-- end of tab contents -->
+
+
 
     </div> <!-- end of container -->
 
