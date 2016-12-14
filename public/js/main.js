@@ -112,7 +112,11 @@ function calcSecondsLeft(hours_left) {
 // COUNTDOWN TIMER
 function getTimeRemaining(endtime) {
   // console.log("this is the end time: ", endtime)
-  var t = Date.parse(endtime) - Date.parse(new Date());
+  var milliseconds = new Date().getMilliseconds();
+  var t = Date.parse(endtime) - (Date.parse(new Date()) + milliseconds);
+
+  // console.log("this is end time", Date.parse(endtime) + milliseconds)
+  // console.log("this is new time", Date.parse(new Date()) + milliseconds2);
   var seconds = Math.floor((t / 1000) % 60);
   var minutes = Math.floor((t / 1000 / 60) % 60);
   var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
@@ -157,8 +161,9 @@ function initializeInTimeClock(id, endtime) {
 
   function updateClock() {
     var t = getTimeRemaining(endtime);
+    console.log(t)
 
-    secondsSpan.innerHTML = t.total
+    secondsSpan.innerHTML = t.total.toLocaleString()
 
     if (t.total <= 0) {
       console.log('im in here:');
