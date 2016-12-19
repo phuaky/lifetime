@@ -68,6 +68,7 @@ $( "#submitDate" ).submit(function( event ) {
 
   initializeClock('clockdiv', deadLine);
   initializeInTimeClock('inTimeClockDiv', netWorth);
+  initNormalClock('justClockDiv', deadLine);
 
 });
 
@@ -180,6 +181,26 @@ function initializeInTimeClock(id, endtime) {
     var t = endtime -= 1
 
     secondsSpan.innerHTML = t.toLocaleString()
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1);
+}
+
+
+function initNormalClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var secondsSpan = clock.querySelector('.iTSeconds');
+
+  function updateClock() {
+
+    var t = getTimeRemaining(endtime);
+
+    secondsSpan.innerHTML = t.total.toLocaleString();
 
     if (t.total <= 0) {
       clearInterval(timeinterval);
